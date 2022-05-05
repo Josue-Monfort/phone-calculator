@@ -1,3 +1,7 @@
+:root {
+    --clr-border-primary: rgb(1, 0, 14);
+}
+
 
 /* SOFT RESET and NO USER SELECTION */
 *,
@@ -9,6 +13,86 @@
     user-select: none;
 }
 
+/* ---------------------------------------------- */
+/*! -------------- GERAL SECTION -------------- */
+/* ---------------------------------------------- */
+
 body {
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phoneContainer {
+    min-width: 95vw;
+    max-width: 90vw;
+    height: 97vh;
+    background: linear-gradient(to bottom left, rgb(86, 1, 112), rgba(223, 81, 45, 0.87));
+    border: 7px solid var(--clr-border-primary);
+    border-radius: 35px; /* TODO CHECK THE RIGHT UNIT TO USE */
+}
+
+/* ---------------------------------------------- */
+/*! -------------- DISPLAY SECTION -------------- */
+/* ---------------------------------------------- */
+
+.calcDisplayContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.251);
+    border-radius: 14px 14px 7px 7px;
+    min-height: 11em;
+    padding: 15px;
+}
+
+.calcDisplayContainer p {
+    font-size: 2.2em;
+    color: white;
+}
+
+/* This is important to keep the top number always on top and not */
+/* go down if there is no bottom number in the display */
+.bottomNumberContainer, .topNumberContainer {
+    min-height: 40px;
+}
+
+/* ---------------------------------------------- */
+/*! -------------- BUTTONS SECTION -------------- */
+/* ---------------------------------------------- */
+
+.btnsGridContainer {
+    display: grid;
+    justify-content: center;
+    height: 66vh;
+    gap: 3px;
+    grid-template-columns: repeat(4, 20vmin);
+    grid-auto-rows: repeat(5, 1fr);
+    border-radius: 0 0 15px 15px;
+    padding: 5px 5px;
+}
+
+button {
+    font-size: 1.75em;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    transition: all 1s;
+    border-radius: 10px;
+    /* Prevents the blue square to appear when touch a button */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+    background-color: rgba(223, 223, 223, 0.384);
+}
+
+/* MOBILE 380px */
+@media screen and (min-width: 23.75em) {
+    .btnsGridContainer {
+        height: 70vh;
+    }
 }
