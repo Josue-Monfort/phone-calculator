@@ -5,9 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css"> 
-    <title>Pear Phone Calculator App</title>
+    <title>Phone Calculator App</title>
   </head>
   <body>
+    
+    <section class="phoneContainer">
+
+      <!-- HOUR, CAMERA AND ICONS DISPLAY TOP -->
+      <section class="topSection">
+
+      </section>
+
+      <!-- DISPLAY CALCULATION NUMBERS -->
+      <section class="calcDisplayContainer">
+        <div class="topNumberContainer">
+          <p id="topNumberDisplay"></p>
+        </div>
+        <div class="bottomNumberContainer">
+          <p id="bottomNumberDisplay"></p>
+        </div>
+      </section>
+
+      <!-- NUMBERS AND OPERATIONS BUTTONS -->
+      <section id="btnsGridContainer">
+        <button id="c" class="buttons btn-clear">C</button>
+        <button id="del" class="buttons btn-symbol btn-delete">Del</button>
+        <button id="%" class="buttons btn-symbol btn-porcent">%</button>
+        <button id="/" class="buttons btn-symbol btn-divide">/</button>
+        <button id="7" class="buttons btn-numbers btn-7">7</button>
+        <button id="8" class="buttons btn-numbers btn-8">8</button>
+        <button id="9" class="buttons btn-numbers btn-9">9</button>
+        <button id="x" class="buttons btn-symbol btn-times">X</button>
+        <button id="4" class="buttons btn-numbers btn-4">4</button>
+        <button id="5" class="buttons btn-numbers btn-5">5</button>
+        <button id="6" class="buttons btn-numbers btn-6">6</button>
+        <button id="-" class="buttons btn-symbol btn-minus">-</button>
+        <button id="1" class="buttons btn-numbers btn-1">1</button>
+        <button id="2" class="buttons btn-numbers btn-2">2</button>
+        <button id="3" class="buttons btn-numbers btn-3">3</button>
+        <button id="+" class="buttons btn-symbol btn-plus">+</button>
+        <button id="gitHub" class="buttons btn-symbol btn-gitHub">git</button>
+        <button id="0" class="buttons btn-numbers btn-0">0</button>
+        <button id="." class="buttons btn-numbers btn-dot">.</button>
+        <button id="=" class="buttons btn-symbol btn-equal">=</button>
+      </section>
+    </section>
     
     <script src="app.js"></script>
   </body>
