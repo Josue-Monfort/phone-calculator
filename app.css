@@ -33,6 +33,36 @@ body {
 }
 
 /* ---------------------------------------------- */
+/*! ---------------- TOP SECTION ---------------- */
+/* ---------------------------------------------- */
+
+.topSection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 5px 20px;
+    color: white;
+    min-height: 1.2em;
+    max-height: 1.2em;
+    gap: 5px;
+}
+
+.hourDisplay {
+    margin-right: auto;
+}
+
+.internetDisplay, .batteryDisplay {
+    width: 25px;
+    height: 30px;
+    -webkit-user-drag: none;
+}
+
+.wifiDisplay {
+    width: 15px;
+    height: 15px;
+}
+
+/* ---------------------------------------------- */
 /*! -------------- DISPLAY SECTION -------------- */
 /* ---------------------------------------------- */
 
@@ -65,7 +95,7 @@ body {
 .btnsGridContainer {
     display: grid;
     justify-content: center;
-    height: 66vh;
+    height: 64vh;
     gap: 3px;
     grid-template-columns: repeat(4, 20vmin);
     grid-auto-rows: repeat(5, 1fr);
