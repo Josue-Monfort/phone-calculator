@@ -19,8 +19,15 @@
 
 body {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
     align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(4, 1, 37);
 }
 
 .phoneContainer {
@@ -160,7 +167,7 @@ button {
 }
 
 button:active {
-    background-color: rgba(223, 223, 223, 0.384);
+    background-color: rgba(223, 223, 223, 0.555);
 }
 
 #gitHub-img {
@@ -182,13 +189,250 @@ button:active {
     font-size: 1.8em;
 }
 
+#topNumberDisplay {
+    font-size: 1.8em;
+}
+
+#bottomNumberDisplay {
+    font-size: 3.2em;
+}
+
 /* MOBILE 380px */
-@media screen and (min-width: 23.75em) {
+@media only screen and (min-width: 23.75em) {
     .calcDisplayContainer {
         min-height: 12em;
     }
 
     .btnsGridContainer {
         height: 68vh;
+    }
+    
+}
+
+/* TABLET 768px */
+@media only screen and (min-width: 768px) {
+    body {
+        height: 100vh;
+        background: linear-gradient(to bottom left, rgb(27, 8, 94), rgb(196, 138, 123),rgb(143, 114, 247));
+    }
+
+    .phoneContainer {
+        min-width: 40vw;
+        max-width: 40vw;
+        min-height: 650px;
+        max-height: 52vh;
+    }
+
+    .calcDisplayContainer p {
+        font-size: 2.5em;
+        color: white;
+    }
+    
+    .btnsGridContainer {
+        height: 0px;
+        grid-template-columns: repeat(4, 10vmin);
+        grid-template-rows: repeat(5, 10vmin);
+    }
+
+    .cameraContainer {
+        width: 13vw;
+        height: 1.7em;
+    }
+    
+    .phoneSpeaker {
+        width: 50px;
+        height: 5px;
+    }
+    
+    .cameraLen {
+        margin-top: -3px;
+        width: 12px;
+        height: 12px;
+    }
+
+    #topNumberDisplay {
+        font-size: 1.9em;
+    }
+
+    #bottomNumberDisplay {
+        font-size: 3.3em;
+    }
+
+    .btn-clear, .btn-equal {
+        color:rgb(245, 134, 107);
+        font-size: 2.1em;
+    }
+    
+    .btn-dot, .btn-plus, .btn-minus, .btn-equal {
+        font-size: 2.2em;
+    }
+
+    .btn-delete, .btn-divide {
+        margin-top: -3px;
+    }
+
+    #gitHub-img {
+        margin-top: 5px;
+        width: 50%;
+        height: auto;
+    }
+}
+
+/* DESKTOP SMALL 1024px */
+@media only screen and (min-width: 64em) {
+    body {
+        height: 100vh;
+        background-image: linear-gradient(to bottom left, rgb(27, 8, 94), rgb(196, 138, 123),rgb(143, 114, 247));
+        background-image: no-repeat;
+    }
+
+    .phoneContainer {
+        min-width: 335px;
+        max-width: 335px;
+        height: 700px;
+    }
+
+    .calcDisplayContainer p {
+        font-size: 2.5em;
+        color: white;
+    }
+    
+    .btnsGridContainer {
+        height: 0px;
+        grid-template-columns: repeat(4, 10vmin);
+        grid-template-rows: repeat(5, 10vmin);
+    }
+
+    .cameraContainer {
+        top: 0;
+        margin-top: -5px;
+        width: 105px;
+    }
+    
+    .phoneSpeaker {
+        margin-top: -3px;
+        width: 50px;
+        height: 5px;
+        border-radius: 6px; 
+        background-color: rgba(71, 71, 71, 0.568);
+        box-shadow: inset 0 -3px 1px 0px rgba(158, 158, 158, 0.568), inset 3px 0px 1px 0px rgba(71, 71, 71, 0.568);
+    }
+    
+    .cameraLen {
+        margin-top: -3px;
+        background-color: rgba(2, 0, 58, 0.712);
+        box-shadow: inset 0 3px 5px 0px rgba(255, 255, 255, 0.24);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        top: 3px;
+        right: 65px;
+    }
+
+    #topNumberDisplay {
+        font-size: 1.9em;
+    }
+
+    #bottomNumberDisplay {
+        font-size: 3.3em;
+    }
+
+    .btn-clear, .btn-equal {
+        color:rgb(245, 134, 107);
+        font-size: 2.1em;
+    }
+    
+    .btn-dot, .btn-plus, .btn-minus, .btn-equal {
+        font-size: 2.2em;
+    }
+
+    .btn-delete, .btn-divide {
+        margin-top: -3px;
+    }
+
+    #gitHub-img {
+        margin-top: 5px;
+        width: 50%;
+        height: auto;
+    }
+}
+
+/* DESKTOP LARGE 1300px */
+@media only screen and (min-width: 1300px) {
+
+    #topNumberDisplay {
+        font-size: 1.6em;
+    }
+
+    #bottomNumberDisplay {
+        font-size: 3em;
+    }
+
+    .hourDisplay {
+        margin-top: 3px;
+        margin-left: 1em;
+    }
+    
+    .internetDisplay, .batteryDisplay {
+        width: 22px;
+        height: 27px;
+        margin-top: 3px;
+    }
+    
+    .wifiDisplay {
+        width: 12px;
+        height: 12px;
+        margin-top: 3px;
+    }
+
+    .phoneContainer {
+        min-width: 290px;
+        max-width: 290px;
+        max-height: 550px;
+        min-height: 550px;
+    }
+
+    .btnsGridContainer {
+        height: 0px;
+        grid-template-columns: repeat(4, 4.2em);
+        grid-template-rows: repeat(5, 3.5em);
+    }
+
+    .cameraContainer {
+        width: 90px;
+        top: 0;
+        margin-top: -5px;
+        height: 1.4em;
+    }
+
+    .phoneSpeaker {
+        margin-top: -3px;
+        width: 35px;
+        height: 4px;
+    }
+    
+    .cameraLen {
+        width: 8px;
+        height: 8px;
+    }
+
+    .btn-clear, .btn-equal {
+        font-size: 2em;
+    }
+    
+    .btn-dot, .btn-plus, .btn-minus, .btn-equal {
+        font-size: 1.8em;
+    }
+    
+    .btn-porcent {
+        font-size: 1.5em;
+    }
+
+    .btn-times {
+        font-size: 1.4em;
+    }
+
+    .btn-delete, .btn-divide {
+        margin-top: -7px;
     }
 }
