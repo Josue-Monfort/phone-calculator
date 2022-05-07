@@ -2,6 +2,11 @@
     --clr-border-primary: rgb(1, 0, 14);
 }
 
+@font-face {
+    font-family: "Azonix";
+    src: url('font/Azonix.otf');
+    src: local('Azonix'), url('font/Azonix.otf') format('otf'), url('font/Azonix.otf') format('truetype');
+}
 
 /* SOFT RESET and NO USER SELECTION */
 *,
@@ -14,20 +19,19 @@
 }
 
 /* ---------------------------------------------- */
-/*! -------------- GERAL SECTION -------------- */
+/*! -------------- GERAL SECTION ---------------- */
 /* ---------------------------------------------- */
 
 body {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
-a {
-    text-decoration: none;
-    color: rgb(4, 1, 37);
+footer {
+    display: none;
 }
 
 .phoneContainer {
@@ -138,11 +142,11 @@ a {
 }
 
 #topNumberDisplay {
-    font-size: 1.7em;
+    font-size: 1.6em;
 }
 
 #bottomNumberDisplay {
-    font-size: 2.8em;
+    font-size: 2.7em;
 }
 
 /* ---------------------------------------------- */
@@ -230,6 +234,14 @@ button:hover {
         background: linear-gradient(to bottom left, rgb(27, 8, 94), rgb(196, 138, 123),rgb(143, 114, 247));
     }
 
+    .topNumberContainer {
+        font-size: 0.6em;
+    }
+
+    .bottomNumberContainer {
+        font-size: 0.7em;
+    }
+
     .phoneContainer {
         min-width: 40vw;
         max-width: 40vw;
@@ -239,7 +251,6 @@ button:hover {
 
     .calcDisplayContainer p {
         font-size: 2.5em;
-        color: white;
     }
     
     .btnsGridContainer {
@@ -273,7 +284,6 @@ button:hover {
     }
 
     .btn-clear, .btn-equal {
-        color:rgb(245, 134, 107);
         font-size: 2.1em;
     }
     
@@ -300,6 +310,36 @@ button:hover {
         background-image: no-repeat;
     }
 
+    .topNumberContainer {
+        font-size: 0.9em;
+    }
+
+    .bottomNumberContainer {
+        font-size: 0.95em;
+    }
+
+    footer {
+        display: block;
+    }
+
+    h1 {
+        font-family: Azonix;
+        font-size: 0.75em;
+        margin: 15px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.726);
+        text-shadow: 1px 0px 3px rgb(32, 32, 32);
+        transition: all 0.5s;
+    }
+    
+    a:hover {
+        text-shadow: 1px 0px 2px black;
+        color: rgba(255, 200, 255, 0.596);
+    }
+
     .phoneContainer {
         min-width: 335px;
         max-width: 335px;
@@ -308,7 +348,6 @@ button:hover {
 
     .calcDisplayContainer p {
         font-size: 2.5em;
-        color: white;
     }
     
     .btnsGridContainer {
@@ -334,11 +373,8 @@ button:hover {
     
     .cameraLen {
         margin-top: -3px;
-        background-color: rgba(2, 0, 58, 0.712);
-        box-shadow: inset 0 3px 5px 0px rgba(255, 255, 255, 0.24);
         width: 12px;
         height: 12px;
-        border-radius: 50%;
         top: 3px;
         right: 65px;
     }
@@ -441,12 +477,8 @@ button:hover {
     button {
         font-size: 1.3em;
     }
-
-    .btn-clear, .btn-equal {
-        font-size: 1.6em;
-    }
     
-    .btn-dot, .btn-plus, .btn-minus, .btn-equal {
+    .btn-dot, .btn-plus, .btn-minus, .btn-equal, .btn-clear {
         font-size: 1.6em;
     }
     
