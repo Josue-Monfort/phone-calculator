@@ -48,6 +48,9 @@ function addDisplayNumbers(num) {
     // can only type one initial zero
     if (num == "0" && botNumDisplay.textContent === "0") {
         return botNumDisplay.textContent = "0";
+    } 
+    if (num === ".") {
+        return checkDot()
     } else if (botNumDisplay.textContent.length > 12) {
         return;
     } else if (botNumDisplay.textContent === "0") {
@@ -58,7 +61,7 @@ function addDisplayNumbers(num) {
     };
 };
 
-// calculates the subtraction, addition and multiplication operations
+// calculates the subtraction, addition, multiplication and porcent operations
 function calculateOperations(operator) {
     currentOperation = `${operator}`;
     let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
@@ -76,6 +79,7 @@ function calculateOperations(operator) {
     };
 };
 
+// calculates the divide operation
 function calculateDivideOperation() {
     setOperation = "÷";
     let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
@@ -99,6 +103,16 @@ function calculateDivideOperation() {
     } 
 };
 
+// prevents the user to input more than one dot
+function checkDot() {
+    if (botNumDisplay.textContent === "" || botNumDisplay.textContent === "0") {
+        botNumDisplay.textContent = "0.";
+    } 
+    if (!botNumDisplay.textContent.includes(".")) {
+        botNumDisplay.textContent += "."
+    }
+}
+
 // gets the bottom number and add it to the top number if it's empty
 function setFisrtNumber(operation) {
     topNumDisplay.textContent = `${botNumDisplay.textContent}  ${operation}`;
@@ -114,6 +128,7 @@ function calculateLastOperation (operation) {
     botNumDisplay.textContent = "";
 };
 
+// it will grab the last operation displaying on the screen and add it to the top number
 function selectOperation(operation) {
     switch (operation) {
         case "+":
