@@ -14,6 +14,8 @@ function addDisplayNumbers(num) {
     // can only type one initial zero
     if (num == "0" && botNumDisplay.textContent === "0") {
         return botNumDisplay.textContent = "0";
+    } else if (botNumDisplay.textContent.length > 12) {
+        return;
     } else if (botNumDisplay.textContent === "0") {
         // it will change the 0 to the clicked number if the display has only a 0 
         botNumDisplay.textContent = num;
