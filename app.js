@@ -1,36 +1,51 @@
+const botNumDisplay = document.querySelector("#bottomNumberDisplay");
+const numbersBtns = document.querySelectorAll(".btn-numbers");
+
+// selects the numbers buttons and add a click event listener to them
+numbersBtns.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        // fire a function to display the numbers clicked
+        addDisplayNumbers(e.target.textContent);
+    });
+});
+
+// Adds the clicked number to the display
+function addDisplayNumbers(num) {
+    return botNumDisplay.textContent += num;
+};
 
 // Takes a math operator and two numbers 
-// and then it does the math calculation on those numbers
+// and then it does the selected math calculation on those numbers
 function calculate(operator, num1, num2) {
     num1 = parseFloat(num1); // To make sure the input is always numbers.
     num2 = parseFloat(num2);
     switch (operator) {
         case "+":
-            return addNumber(num1, num2);
+            return addNumbers(num1, num2);
         case "-":
-            return subtractNumber(num1, num2);
+            return subtractNumbers(num1, num2);
         case "*":
-            return multiplyNumber(num1, num2);
+            return multiplyNumbers(num1, num2);
         case "÷":
-            return divideNumber(num1, num2);
+            return divideNumbers(num1, num2);
         case "%":
             return getPorcentage(num1, num2);
     };
 };
 
-function addNumber(num1, num2) {
+function addNumbers(num1, num2) {
     return num1 + num2;
 };
 
-function subtractNumber(num1, num2) {
+function subtractNumbers(num1, num2) {
     return num1 - num2;
 };
 
-function multiplyNumber(num1, num2) {
+function multiplyNumbers(num1, num2) {
     return num1 * num2;
 };
 
-function divideNumber(num1, num2) {
+function divideNumbers(num1, num2) {
     return num1 / num2;
 };
 
@@ -38,7 +53,7 @@ function getPorcentage(num1, num2) {
     return ((num1 / 100) * num2);
 };
 
-// Show app function
+// Show time function
 const userHourDisplay = document.querySelector(".hourDisplay");
 
 // Gets the user hour and display it on the phone screen
