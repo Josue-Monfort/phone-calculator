@@ -29,6 +29,9 @@ operationBtns.forEach((button) => {
             case "del":
                 deleteLastNumber();
                 break;
+            case "=":
+                getsumResult();
+                break;
         };
     });
 });
@@ -168,6 +171,19 @@ function selectOperation(operation) {
             };
     };
 };
+
+function getsumResult() {
+    if (botNumDisplay.textContent === "" || topNumDisplay.textContent === "") {
+        return;
+    }
+    let lastOperator = topNumDisplay.textContent.slice(-1); 
+    let sum = calculate(`${lastOperator}`, topNumDisplay.textContent, botNumDisplay.textContent);
+    num1 = parseFloat(topNumDisplay.textContent);
+    num2 = parseFloat(botNumDisplay.textContent);
+    sum = roundSum(sum);
+    topNumDisplay.textContent = `${num1} ${lastOperator} ${num2} =`;
+    botNumDisplay.textContent = sum;
+}
 
 // Takes a math operator and two numbers 
 // and then it does the selected math calculation on those numbers
