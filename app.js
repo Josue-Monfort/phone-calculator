@@ -22,6 +22,10 @@ operationBtns.forEach((button) => {
                 break;
             case "c":
                 clearDisplay();
+                break;
+            case "del":
+                deleteLastNumber();
+                break;
         };
     });
 });
@@ -88,11 +92,15 @@ function getPorcentage(num1, num2) {
     return ((num1 / 100) * num2);
 };
 
-// CLEAR ALL
+
 function clearDisplay() {
     botNumDisplay.textContent = "";
     topNumDisplay.textContent = "";
-}
+};
+
+function deleteLastNumber() {
+    botNumDisplay.textContent = botNumDisplay.textContent.slice(0, -1);
+};
 
 // Show time function
 const userHourDisplay = document.querySelector(".hourDisplay");
