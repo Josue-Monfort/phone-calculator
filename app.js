@@ -1,9 +1,34 @@
 const botNumDisplay = document.querySelector("#bottomNumberDisplay");
+const topNumDisplay = document.querySelector("#topNumberDisplay");
 const numbersBtns = document.querySelectorAll(".btn-numbers");
+const operationBtns = document.querySelectorAll(".btn-symbol");
+
+// adds a event listener to the operation buttons
+operationBtns.forEach((button) => {
+    button.addEventListener("mousedown", (e) => {
+        switch (e.target.id) {
+            // Todo make the buttons do the operations
+            case "+":
+                calculate("+", botNumDisplay.textContent, 10)
+                break;
+            case "-":
+                calculate("-", botNumDisplay.textContent, 10)
+                break;
+            case "x": 
+                calculate("x", botNumDisplay.textContent, 10)
+                break;
+            case "÷":
+                calculate("÷", botNumDisplay.textContent, 10)
+                break;
+            case "c":
+                clearDisplay();
+        };
+    });
+});
 
 // selects the numbers buttons and add a click event listener to them
 numbersBtns.forEach((button) => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener("mousedown", (e) => {
         // fire a function to display the numbers clicked
         addDisplayNumbers(e.target.id);
     });
@@ -34,7 +59,7 @@ function calculate(operator, num1, num2) {
             return addNumbers(num1, num2);
         case "-":
             return subtractNumbers(num1, num2);
-        case "*":
+        case "x":
             return multiplyNumbers(num1, num2);
         case "÷":
             return divideNumbers(num1, num2);
@@ -62,6 +87,12 @@ function divideNumbers(num1, num2) {
 function getPorcentage(num1, num2) {
     return ((num1 / 100) * num2);
 };
+
+// CLEAR ALL
+function clearDisplay() {
+    botNumDisplay.textContent = "";
+    topNumDisplay.textContent = "";
+}
 
 // Show time function
 const userHourDisplay = document.querySelector(".hourDisplay");
