@@ -2,7 +2,7 @@ const botNumDisplay = document.querySelector("#bottomNumberDisplay");
 const topNumDisplay = document.querySelector("#topNumberDisplay");
 const numbersBtns = document.querySelectorAll(".btn-numbers");
 const operationBtns = document.querySelectorAll(".btn-symbol");
-
+const clearButton = document.querySelector(".btn-clear");
 
 let currentOperation = "";
 let operationList = ["+", "-", "*", "÷", "%"]
@@ -11,7 +11,6 @@ let operationList = ["+", "-", "*", "÷", "%"]
 operationBtns.forEach((button) => {
     button.addEventListener("mousedown", (e) => {
         switch (e.target.id) {
-            // Todo make the buttons do the operations
             case "+":
                 calculateOperations("+");
                 break;
@@ -21,15 +20,11 @@ operationBtns.forEach((button) => {
             case "*": 
                 calculateOperations("*");
                 break;
-            // todo make the divide function
             case "÷":
-                calculateOperations("÷");
+                calculateDivideOperation();
                 break;
             case "%":
-                calculateOperations("%");
-                break;
-            case "c":
-                clearDisplay();
+                calculateOperations("%")
                 break;
             case "del":
                 deleteLastNumber();
@@ -45,6 +40,8 @@ numbersBtns.forEach((button) => {
         addDisplayNumbers(e.target.id);
     });
 });
+
+clearButton.addEventListener("mousedown", () => clearDisplay());
 
 // Adds the clicked number to the display
 function addDisplayNumbers(num) {
@@ -64,7 +61,7 @@ function addDisplayNumbers(num) {
 // calculates the subtraction, addition and multiplication operations
 function calculateOperations(operator) {
     currentOperation = `${operator}`;
-    let lastOperator = operationList.some(el => topNumberDisplay.innerHTML.includes(el));
+    let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
     if (topNumDisplay.textContent === "" && botNumDisplay.textContent === "") {
         return;
     }
@@ -77,6 +74,29 @@ function calculateOperations(operator) {
     else if (lastOperator === true) { 
         return calculateLastOperation(currentOperation)
     };
+};
+
+function calculateDivideOperation() {
+    setOperation = "÷";
+    let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
+    if (botNumDisplay.textContent === "0") {
+        numbersBtns.forEach(button => {
+            button.disabled = true
+        });
+        operationBtns.forEach(button => {
+            button.disabled = true;
+        });
+        return bottomNumberDisplay.textContent = "Can't divide by 0! Clear please";
+    }
+    if (botNumDisplay.textContent === "") {
+        return selectOperation(setOperation)
+    } 
+    if (topNumDisplay.textContent === "") {
+        return setFisrtNumber(setOperation)
+    }
+    else if (lastOperator === true) { 
+        return calculateLastOperation(setOperation)
+    } 
 };
 
 // gets the bottom number and add it to the top number if it's empty
@@ -180,6 +200,12 @@ function roundSum(num) {
 function clearDisplay() {
     botNumDisplay.textContent = "";
     topNumDisplay.textContent = "";
+    numbersBtns.forEach(button => {
+        button.disabled = false;
+    });
+    operationBtns.forEach(button => {
+        button.disabled = false;
+    });
 };
 
 function deleteLastNumber() {
