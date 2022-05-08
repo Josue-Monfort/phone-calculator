@@ -5,7 +5,8 @@ const operationBtns = document.querySelectorAll(".btn-symbol");
 const clearButton = document.querySelector(".btn-clear");
 
 let currentOperation = "";
-let operationList = ["+", "-", "*", "÷", "%"]
+let operationList = ["+", "-", "*", "÷", "%"];
+let equalList = ["="];
 
 // adds a event listener to the operation buttons
 operationBtns.forEach((button) => {
@@ -48,6 +49,7 @@ clearButton.addEventListener("mousedown", () => clearDisplay());
 
 // Adds the clicked number to the display
 function addDisplayNumbers(num) {
+    let equalSignCheck = equalList.some(el => topNumberDisplay.innerHTML.includes(el))
     // can only type one initial zero
     if (num == "0" && botNumDisplay.textContent === "0") {
         return botNumDisplay.textContent = "0";
@@ -59,6 +61,10 @@ function addDisplayNumbers(num) {
     } else if (botNumDisplay.textContent === "0") {
         // it will change the 0 to the clicked number if the display has only a 0 
         botNumDisplay.textContent = num;
+    } else if (equalSignCheck === true) {
+        topNumDisplay.textContent = "";
+        botNumDisplay.textContent = "";
+        botNumDisplay.textContent += num;
     } else {
         return botNumDisplay.textContent += num;
     };
@@ -68,12 +74,16 @@ function addDisplayNumbers(num) {
 function calculateOperations(operator) {
     currentOperation = `${operator}`;
     let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
+    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el));
+    if (equalSignCheck === true) {
+        return;
+    };
     if (topNumDisplay.textContent === "" && botNumDisplay.textContent === "") {
         return;
-    }
+    };
     if (topNumberDisplay.textContent === "") {
         return setFisrtNumber(currentOperation)
-    } 
+    };
     if (botNumDisplay.textContent === "") {
         return selectOperation(currentOperation);
     }
@@ -86,6 +96,10 @@ function calculateOperations(operator) {
 function calculateDivideOperation() {
     setOperation = "÷";
     let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
+    let equalSignCheck = equalList.some(el => topNumberDisplay.textContent.includes(el))
+    if (equalSignCheck === true) {
+        return;
+    }
     if (botNumDisplay.textContent === "0") {
         numbersBtns.forEach(button => {
             button.disabled = true
@@ -108,11 +122,16 @@ function calculateDivideOperation() {
 
 // prevents the user to input more than one dot
 function checkDot() {
+    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el))
     if (botNumDisplay.textContent === "" || botNumDisplay.textContent === "0") {
         botNumDisplay.textContent = "0.";
     } 
     if (!botNumDisplay.textContent.includes(".")) {
         botNumDisplay.textContent += "."
+    }
+    if (equalSignCheck === true) {
+        topNumDisplay.textContent = ""
+        botNumDisplay.textContent = "0."
     }
 }
 
@@ -173,7 +192,11 @@ function selectOperation(operation) {
 };
 
 function getsumResult() {
+    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el))
     if (botNumDisplay.textContent === "" || topNumDisplay.textContent === "") {
+        return;
+    }
+    if (equalSignCheck === true) {
         return;
     }
     let lastOperator = topNumDisplay.textContent.slice(-1); 
@@ -240,7 +263,13 @@ function clearDisplay() {
 };
 
 function deleteLastNumber() {
-    botNumDisplay.textContent = botNumDisplay.textContent.slice(0, -1);
+    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el))
+    if (equalSignCheck === true) {
+        topNumDisplay.textContent = "";
+        botNumDisplay.textContent = "";
+    } else {
+        botNumDisplay.textContent = botNumDisplay.textContent.slice(0, -1);
+    };
 };
 
 // Show time function
