@@ -5,8 +5,45 @@ const operationBtns = document.querySelectorAll(".btn-symbol");
 const clearButton = document.querySelector(".btn-clear");
 
 let currentOperation = "";
-let operationList = ["+", "-", "*", "÷", "%"];
-let equalList = ["="];
+const operationList = ["+", "-", "*", "÷", "%"];
+const equalList = ["="];
+
+// keyboard suport
+window.addEventListener("keydown", (e) => {
+    let equalSignCheck = equalList.some(el => topNumberDisplay.innerHTML.includes(el))
+    let strKey = e.key;
+    let numKey = parseFloat(e.key);
+    if (equalSignCheck === true) {
+        topNumDisplay.textContent = "";
+        botNumDisplay.textContent = "";
+    }
+    if (numKey >= 1 && numKey <= 9 && botNumDisplay.textContent.length < 12) {
+        return botNumDisplay.textContent += e.key;
+    }
+    if (e.key === "0" && botNumDisplay.textContent === "0") {
+        return botNumDisplay.textContent = "0";
+    } else if (e.key === "0") {
+        return botNumDisplay.textContent += e.key;
+    }
+    switch (strKey) {
+        case "+":
+            return calculateOperations("+");
+        case "-":
+            return calculateOperations("-");
+        case "*":
+            return calculateOperations("*");
+        case "/":
+            return calculateDivideOperation();
+        case "%":
+            return calculateOperations("%");
+        case ".":
+            return checkDot();
+        case "Backspace":
+            return deleteLastNumber();
+        case "Enter":
+            return getsumResult();
+    }
+})
 
 // adds a event listener to the operation buttons
 operationBtns.forEach((button) => {
@@ -25,7 +62,7 @@ operationBtns.forEach((button) => {
                 calculateDivideOperation();
                 break;
             case "%":
-                calculateOperations("%")
+                calculateOperations("%");
                 break;
             case "del":
                 deleteLastNumber();
@@ -204,6 +241,8 @@ function getsumResult() {
     num1 = parseFloat(topNumDisplay.textContent);
     num2 = parseFloat(botNumDisplay.textContent);
     sum = roundSum(sum);
+    num1 = roundSum(num1)
+    num2 = roundSum(num2)
     topNumDisplay.textContent = `${num1} ${lastOperator} ${num2} =`;
     botNumDisplay.textContent = sum;
 }
