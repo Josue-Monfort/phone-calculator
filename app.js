@@ -5,13 +5,17 @@ const numbersBtns = document.querySelectorAll(".btn-numbers");
 numbersBtns.forEach((button) => {
     button.addEventListener("click", (e) => {
         // fire a function to display the numbers clicked
-        addDisplayNumbers(e.target.textContent);
+        addDisplayNumbers(e.target.id);
     });
 });
 
 // Adds the clicked number to the display
 function addDisplayNumbers(num) {
-    return botNumDisplay.textContent += num;
+    if (num == "0" && botNumDisplay.textContent === "0") {
+        return botNumDisplay.textContent = "0";
+    } else {
+        return botNumDisplay.textContent += num;
+    };
 };
 
 // Takes a math operator and two numbers 
