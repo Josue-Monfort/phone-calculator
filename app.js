@@ -3,22 +3,30 @@ const topNumDisplay = document.querySelector("#topNumberDisplay");
 const numbersBtns = document.querySelectorAll(".btn-numbers");
 const operationBtns = document.querySelectorAll(".btn-symbol");
 
+
+let currentOperation = "";
+let operationList = ["+", "-", "*", "÷", "%"]
+
 // adds a event listener to the operation buttons
 operationBtns.forEach((button) => {
     button.addEventListener("mousedown", (e) => {
         switch (e.target.id) {
             // Todo make the buttons do the operations
             case "+":
-                calculate("+", botNumDisplay.textContent, 10)
+                calculateOperations("+");
                 break;
             case "-":
-                calculate("-", botNumDisplay.textContent, 10)
+                calculateOperations("-");
                 break;
-            case "x": 
-                calculate("x", botNumDisplay.textContent, 10)
+            case "*": 
+                calculateOperations("*");
                 break;
+            // todo make the divide function
             case "÷":
-                calculate("÷", botNumDisplay.textContent, 10)
+                calculateOperations("÷");
+                break;
+            case "%":
+                calculateOperations("%");
                 break;
             case "c":
                 clearDisplay();
@@ -53,6 +61,79 @@ function addDisplayNumbers(num) {
     };
 };
 
+// calculates the subtraction, addition and multiplication operations
+function calculateOperations(operator) {
+    currentOperation = `${operator}`;
+    let lastOperator = operationList.some(el => topNumberDisplay.innerHTML.includes(el));
+    if (topNumDisplay.textContent === "" && botNumDisplay.textContent === "") {
+        return;
+    }
+    if (topNumberDisplay.textContent === "") {
+        return setFisrtNumber(currentOperation)
+    } 
+    if (botNumDisplay.textContent === "") {
+        return selectOperation(currentOperation);
+    }
+    else if (lastOperator === true) { 
+        return calculateLastOperation(currentOperation)
+    };
+};
+
+// gets the bottom number and add it to the top number if it's empty
+function setFisrtNumber(operation) {
+    topNumDisplay.textContent = `${botNumDisplay.textContent}  ${operation}`;
+    botNumDisplay.textContent = "";
+};
+
+// calculate the bottom and top numbers
+function calculateLastOperation (operation) {
+    let lastOperator = topNumDisplay.textContent.slice(-1);
+    let sum = calculate(`${lastOperator}`, topNumDisplay.textContent, botNumDisplay.textContent);
+    sum = roundSum(sum);
+    topNumDisplay.textContent = `${sum} ${operation}`;
+    botNumDisplay.textContent = "";
+};
+
+function selectOperation(operation) {
+    switch (operation) {
+        case "+":
+            if (topNumDisplay.textContent === "") {
+                return;
+            } else {
+                topNumDisplay.textContent = topNumDisplay.textContent.slice(0, -2);
+                return topNumDisplay.textContent = `${topNumDisplay.textContent} +`;
+            };
+        case "-":
+            if (topNumDisplay.textContent === "") {
+                return;
+            } else {
+                topNumDisplay.textContent = topNumDisplay.textContent.slice(0, -2);
+                return topNumDisplay.textContent = `${topNumDisplay.textContent} -`;
+            };
+        case "*":
+            if (topNumDisplay.textContent === "") {
+                return;
+            } else {
+                topNumDisplay.textContent = topNumDisplay.textContent.slice(0, -2);
+                return topNumDisplay.textContent = `${topNumDisplay.textContent} *`;     
+            };
+        case "÷":
+            if (topNumDisplay.textContent === "") {
+                return;
+            } else {
+                topNumDisplay.textContent = topNumDisplay.textContent.slice(0, -2);
+                return topNumDisplay.textContent = `${topNumDisplay.textContent} ÷`;
+            };
+        case "%":
+            if (topNumDisplay.textContent === "") {
+                return;
+            } else {
+                topNumDisplay.textContent = topNumDisplay.textContent.slice(0, -2);
+                return topNumDisplay.textContent = `${topNumDisplay.textContent} %`;
+            };
+    };
+};
+
 // Takes a math operator and two numbers 
 // and then it does the selected math calculation on those numbers
 function calculate(operator, num1, num2) {
@@ -63,7 +144,7 @@ function calculate(operator, num1, num2) {
             return addNumbers(num1, num2);
         case "-":
             return subtractNumbers(num1, num2);
-        case "x":
+        case "*":
             return multiplyNumbers(num1, num2);
         case "÷":
             return divideNumbers(num1, num2);
@@ -92,6 +173,9 @@ function getPorcentage(num1, num2) {
     return ((num1 / 100) * num2);
 };
 
+function roundSum(num) {
+    return Math.round(num * 1000) / 1000;
+};
 
 function clearDisplay() {
     botNumDisplay.textContent = "";
