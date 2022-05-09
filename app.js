@@ -174,8 +174,14 @@ function checkDot() {
 
 // gets the bottom number and add it to the top number if it's empty
 function setFisrtNumber(operation) {
-    topNumDisplay.textContent = `${botNumDisplay.textContent}  ${operation}`;
-    botNumDisplay.textContent = "";
+    if (botNumDisplay.textContent.slice(-1) === ".") {
+        botNumDisplay.textContent = botNumDisplay.textContent.slice(0, -1);
+        topNumDisplay.textContent = `${botNumDisplay.textContent} ${operation}`;
+        botNumDisplay.textContent = "";
+    } else {
+        topNumDisplay.textContent = `${botNumDisplay.textContent} ${operation}`;
+        botNumDisplay.textContent = "";
+    }
 };
 
 // calculate the bottom and top numbers
