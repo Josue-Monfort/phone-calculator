@@ -15,21 +15,21 @@ gitHubBtn.addEventListener("click", () => {
 
 // keyboard suport
 window.addEventListener("keydown", (e) => {
-    let equalSignCheck = equalList.some(el => topNumberDisplay.innerHTML.includes(el))
+    let equalSignCheck = equalList.some(el => topNumberDisplay.innerHTML.includes(el));
     let strKey = e.key;
     let numKey = parseFloat(e.key);
     if (equalSignCheck === true) {
         topNumDisplay.textContent = "";
         botNumDisplay.textContent = "";
-    }
+    };
     if (numKey >= 1 && numKey <= 9 && botNumDisplay.textContent.length < 12) {
         return botNumDisplay.textContent += e.key;
-    }
+    };
     if (e.key === "0" && botNumDisplay.textContent === "0") {
         return botNumDisplay.textContent = "0";
     } else if (e.key === "0") {
         return botNumDisplay.textContent += e.key;
-    }
+    };
     switch (strKey) {
         case "+":
             return calculateOperations("+");
@@ -55,26 +55,19 @@ operationBtns.forEach((button) => {
     button.addEventListener("mousedown", (e) => {
         switch (e.target.id) {
             case "+":
-                calculateOperations("+");
-                break;
+                return calculateOperations("+");
             case "-":
-                calculateOperations("-");
-                break;
+                return calculateOperations("-");
             case "*": 
-                calculateOperations("*");
-                break;
+                return calculateOperations("*");
             case "÷":
-                calculateDivideOperation();
-                break;
+                return calculateDivideOperation();
             case "%":
-                calculateOperations("%");
-                break;
+                return calculateOperations("%");
             case "del":
-                deleteLastNumber();
-                break;
+                return deleteLastNumber();
             case "=":
-                getsumResult();
-                break;
+                return getsumResult();
         };
     });
 });
@@ -95,7 +88,7 @@ function addDisplayNumbers(num) {
     // can only type one initial zero
     if (num == "0" && botNumDisplay.textContent === "0") {
         return botNumDisplay.textContent = "0";
-    } 
+    }; 
     if (num === ".") {
         return checkDot()
     } else if (botNumDisplay.textContent.length > 12) {
@@ -124,13 +117,12 @@ function calculateOperations(operator) {
         return;
     };
     if (topNumberDisplay.textContent === "") {
-        return setFisrtNumber(currentOperation)
+        return setFisrtNumber(currentOperation);
     };
     if (botNumDisplay.textContent === "") {
         return selectOperation(currentOperation);
-    }
-    else if (lastOperator === true) { 
-        return calculateLastOperation(currentOperation)
+    } else if (lastOperator === true) { 
+        return calculateLastOperation(currentOperation);
     };
 };
 
@@ -138,43 +130,42 @@ function calculateOperations(operator) {
 function calculateDivideOperation() {
     setOperation = "÷";
     let lastOperator = operationList.some(el => topNumberDisplay.textContent.includes(el));
-    let equalSignCheck = equalList.some(el => topNumberDisplay.textContent.includes(el))
+    let equalSignCheck = equalList.some(el => topNumberDisplay.textContent.includes(el));
     if (equalSignCheck === true) {
         return;
-    }
+    };
     if (botNumDisplay.textContent === "0") {
         numbersBtns.forEach(button => {
-            button.disabled = true
+            button.disabled = true;
         });
         operationBtns.forEach(button => {
             button.disabled = true;
         });
         return bottomNumberDisplay.textContent = "Can't divide by 0! Clear please";
-    }
+    };
     if (botNumDisplay.textContent === "") {
-        return selectOperation(setOperation)
-    } 
+        return selectOperation(setOperation);
+    };
     if (topNumDisplay.textContent === "") {
-        return setFisrtNumber(setOperation)
-    }
-    else if (lastOperator === true) { 
-        return calculateLastOperation(setOperation)
-    } 
+        return setFisrtNumber(setOperation);
+    } else if (lastOperator === true) { 
+        return calculateLastOperation(setOperation);
+    };
 };
 
 // prevents the user to input more than one dot
 function checkDot() {
-    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el))
+    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el));
     if (botNumDisplay.textContent === "" || botNumDisplay.textContent === "0") {
         botNumDisplay.textContent = "0.";
-    } 
+    };
     if (!botNumDisplay.textContent.includes(".")) {
-        botNumDisplay.textContent += "."
-    }
+        botNumDisplay.textContent += ".";
+    };
     if (equalSignCheck === true) {
-        topNumDisplay.textContent = ""
-        botNumDisplay.textContent = "0."
-    }
+        topNumDisplay.textContent = "";
+        botNumDisplay.textContent = "0.";
+    };
 }
 
 // gets the bottom number and add it to the top number if it's empty
@@ -186,7 +177,7 @@ function setFisrtNumber(operation) {
     } else {
         topNumDisplay.textContent = `${botNumDisplay.textContent} ${operation}`;
         botNumDisplay.textContent = "";
-    }
+    };
 };
 
 // calculate the bottom and top numbers
@@ -240,20 +231,20 @@ function selectOperation(operation) {
 };
 
 function getsumResult() {
-    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el))
+    let equalSignCheck = equalList.some(el => topNumDisplay.textContent.includes(el));
     if (botNumDisplay.textContent === "" || topNumDisplay.textContent === "") {
         return;
     }
     if (equalSignCheck === true) {
         return;
-    }
+    };
     let lastOperator = topNumDisplay.textContent.slice(-1); 
     let sum = calculate(`${lastOperator}`, topNumDisplay.textContent, botNumDisplay.textContent);
     num1 = parseFloat(topNumDisplay.textContent);
     num2 = parseFloat(botNumDisplay.textContent);
     sum = roundSum(sum);
-    num1 = roundSum(num1)
-    num2 = roundSum(num2)
+    num1 = roundSum(num1);
+    num2 = roundSum(num2);
     topNumDisplay.textContent = `${num1} ${lastOperator} ${num2} =`;
     botNumDisplay.textContent = sum;
 }
@@ -321,8 +312,6 @@ function deleteLastNumber() {
         botNumDisplay.textContent = botNumDisplay.textContent.slice(0, -1);
     };
 };
-
-
 
 // Show time function
 const userHourDisplay = document.querySelector(".hourDisplay");
