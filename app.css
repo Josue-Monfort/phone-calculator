@@ -356,19 +356,13 @@ button:active {
     }
 
     .topNumberContainer {
-        font-size: 0.9em;
+        font-size: 1.15em;
     }
 
     .bottomNumberContainer {
-        font-size: 0.95em;
-    }
-
-    #topNumberDisplay {
-        font-size: 1.5em;
-    }
-
-    #bottomNumberDisplay {
-        font-size: 2.6em;
+        font-size: 1.1em;
+        min-height: 53px;
+        margin-top: -10px;
     }
 
     /* ! -- BUTTON SECTION -- */
