@@ -182,12 +182,12 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
-button:active {
-    background-color: rgba(223, 223, 223, 0.555);
+button:focus {
+    outline: none;
 }
 
-button:hover {
-    background-color: rgba(255, 255, 255, 0.158)
+button:active {
+    background-color: rgba(223, 223, 223, 0.555);
 }
 
 #gitHub-img {
@@ -324,6 +324,10 @@ button:hover {
 
     footer {
         display: block;
+    }
+
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.158)
     }
 
     h1 {

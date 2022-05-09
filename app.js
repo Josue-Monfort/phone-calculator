@@ -3,10 +3,15 @@ const topNumDisplay = document.querySelector("#topNumberDisplay");
 const numbersBtns = document.querySelectorAll(".btn-numbers");
 const operationBtns = document.querySelectorAll(".btn-symbol");
 const clearButton = document.querySelector(".btn-clear");
+const gitHubBtn = document.querySelector("#gitHub");
 
 let currentOperation = "";
 const operationList = ["+", "-", "*", "÷", "%"];
 const equalList = ["="];
+
+gitHubBtn.addEventListener("click", () => {
+    window.open("https://github.com/Josue-Monfort/phone-calculator", "_blank");
+});
 
 // keyboard suport
 window.addEventListener("keydown", (e) => {
@@ -316,6 +321,8 @@ function deleteLastNumber() {
         botNumDisplay.textContent = botNumDisplay.textContent.slice(0, -1);
     };
 };
+
+
 
 // Show time function
 const userHourDisplay = document.querySelector(".hourDisplay");
