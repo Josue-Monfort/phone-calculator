@@ -16,7 +16,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    -webkit-user-drag: none;
+    -webkit-user-drag: none; /* prevents the user to drag the buttons images */
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
@@ -34,6 +34,7 @@ body {
     gap: 20px;
 }
 
+/* footer will only show on the desktop viewport */
 footer {
     display: none;
 }
@@ -134,6 +135,7 @@ footer {
     padding: 15px;
 }
 
+/* The numbers inside the display container */
 .calcDisplayContainer p {
     font-size: 2.2em;
     color: white;
@@ -190,12 +192,6 @@ button:active {
     background-color: rgba(223, 223, 223, 0.555);
 }
 
-#gitHub-img {
-    margin-top: 5px;
-    width: 60%;
-    height: auto;
-}
-
 .btn-clear, .btn-equal {
     color:rgb(245, 134, 107);
     font-size: 2.1em;
@@ -209,18 +205,19 @@ button:active {
     font-size: 1.8em;
 }
 
-
+#gitHub-img {
+    margin-top: 5px;
+    width: 60%;
+    height: auto;
+}
 
 /* MOBILE 380px */
 @media only screen and (min-width: 23.75em) {
+    /* ! --- DISPLAY SECTION --- */
     .calcDisplayContainer {
         min-height: 12em;
     }
-
-    .btnsGridContainer {
-        height: 68vh;
-    }
-
+    
     #topNumberDisplay {
         font-size: 1.6em;
     }
@@ -228,24 +225,22 @@ button:active {
     #bottomNumberDisplay {
         font-size: 2.8em;
     }
-    
+
+    /* ! --- BUTTONS SECTION --- */
+    .btnsGridContainer {
+        height: 68vh;
+    }
 }
 
 /* TABLET 768px */
 @media only screen and (min-width: 768px) {
+
+    /* ! -- GERAL SECTION -- */
     body {
         height: 100vh;
         background: linear-gradient(to bottom left, rgb(27, 8, 94), rgb(196, 138, 123),rgb(143, 114, 247));
     }
-
-    .topNumberContainer {
-        font-size: 0.6em;
-    }
-
-    .bottomNumberContainer {
-        font-size: 0.7em;
-    }
-
+    
     .phoneContainer {
         min-width: 40vw;
         max-width: 40vw;
@@ -253,16 +248,7 @@ button:active {
         max-height: 52vh;
     }
 
-    .calcDisplayContainer p {
-        font-size: 2.5em;
-    }
-    
-    .btnsGridContainer {
-        height: 0px;
-        grid-template-columns: repeat(4, 10vmin);
-        grid-template-rows: repeat(5, 10vmin);
-    }
-
+    /* ! -- TOP SECTION -- */
     .cameraContainer {
         width: 13vw;
         height: 1.7em;
@@ -279,12 +265,32 @@ button:active {
         height: 12px;
     }
 
+    /* ! -- DISPLAY SECTION -- */
+    .calcDisplayContainer p {
+        font-size: 2.5em;
+    }
+
+    .topNumberContainer {
+        font-size: 0.6em;
+    }
+
+    .bottomNumberContainer {
+        font-size: 0.7em;
+    }
+
     #topNumberDisplay {
         font-size: 1.9em;
     }
 
     #bottomNumberDisplay {
         font-size: 3.3em;
+    }
+    
+    /* ! -- BUTTON SECTION -- */
+    .btnsGridContainer {
+        height: 0px;
+        grid-template-columns: repeat(4, 10vmin);
+        grid-template-rows: repeat(5, 10vmin);
     }
 
     .btn-clear, .btn-equal {
@@ -308,44 +314,11 @@ button:active {
 
 /* DESKTOP SMALL 1024px */
 @media only screen and (min-width: 64em) {
+    /* ! -- GERAL SECTION -- */
     body {
         height: 100vh;
         background-image: linear-gradient(to bottom left, rgb(27, 8, 94), rgb(196, 138, 123),rgb(143, 114, 247));
         background-image: no-repeat;
-    }
-
-    .topNumberContainer {
-        font-size: 0.9em;
-    }
-
-    .bottomNumberContainer {
-        font-size: 0.95em;
-    }
-
-    footer {
-        display: block;
-    }
-
-    button:hover {
-        background-color: rgba(255, 255, 255, 0.158)
-    }
-
-    h1 {
-        font-family: Azonix;
-        font-size: 0.75em;
-        margin: 15px;
-    }
-    
-    a {
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.726);
-        text-shadow: 1px 0px 3px rgb(32, 32, 32);
-        transition: all 0.5s;
-    }
-    
-    a:hover {
-        text-shadow: 1px 0px 2px black;
-        color: rgba(255, 200, 255, 0.596);
     }
 
     .phoneContainer {
@@ -353,17 +326,7 @@ button:active {
         max-width: 335px;
         height: 700px;
     }
-
-    .calcDisplayContainer p {
-        font-size: 2.5em;
-    }
-    
-    .btnsGridContainer {
-        height: 0px;
-        grid-template-columns: repeat(4, 4.8em);
-        grid-template-rows: repeat(5, 4.7em);
-    }
-
+    /* ! -- TOP SECTION -- */
     .cameraContainer {
         top: 0;
         margin-top: -5px;
@@ -387,6 +350,19 @@ button:active {
         right: 65px;
     }
 
+    /* ! -- DISPLAY SECTION -- */
+    .calcDisplayContainer p {
+        font-size: 2.5em;
+    }
+
+    .topNumberContainer {
+        font-size: 0.9em;
+    }
+
+    .bottomNumberContainer {
+        font-size: 0.95em;
+    }
+
     #topNumberDisplay {
         font-size: 1.5em;
     }
@@ -395,10 +371,21 @@ button:active {
         font-size: 2.6em;
     }
 
+    /* ! -- BUTTON SECTION -- */
+    .btnsGridContainer {
+        height: 0px;
+        grid-template-columns: repeat(4, 4.8em);
+        grid-template-rows: repeat(5, 4.7em);
+    }
+
     button {
         font-size: 1.55em;
     }
 
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.158)
+    }
+    
     .btn-clear {
         font-size: 2em;
     }
@@ -421,19 +408,42 @@ button:active {
         width: 50%;
         height: auto;
     }
+
+    /* ! -- FOOTER SECTION -- */
+    footer {
+        display: block;
+    }
+
+    h1 {
+        font-family: Azonix;
+        font-size: 0.75em;
+        margin: 15px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.726);
+        text-shadow: 1px 0px 3px rgb(32, 32, 32);
+        transition: all 0.5s;
+    }
+
+    a:hover {
+        text-shadow: 1px 0px 2px black;
+        color: rgba(255, 200, 255, 0.596);
+    }
 }
 
 /* DESKTOP LARGE 1300px */
 @media only screen and (min-width: 1300px) {
-
-    #topNumberDisplay {
-        font-size: 1.2em;
+    /* ! -- GERAL SECTION -- */
+    .phoneContainer {
+        min-width: 290px;
+        max-width: 290px;
+        max-height: 550px;
+        min-height: 550px;
     }
 
-    #bottomNumberDisplay {
-        font-size: 2.2em;
-    }
-
+    /* ! -- TOP SECTION -- */
     .hourDisplay {
         margin-top: 3px;
         margin-left: 1em;
@@ -449,19 +459,6 @@ button:active {
         width: 12px;
         height: 12px;
         margin-top: 3px;
-    }
-
-    .phoneContainer {
-        min-width: 290px;
-        max-width: 290px;
-        max-height: 550px;
-        min-height: 550px;
-    }
-
-    .btnsGridContainer {
-        height: 0px;
-        grid-template-columns: repeat(4, 4.2em);
-        grid-template-rows: repeat(5, 3.5em);
     }
 
     .cameraContainer {
@@ -480,6 +477,22 @@ button:active {
     .cameraLen {
         width: 8px;
         height: 8px;
+    }
+
+    /* ! -- DISPLAY SECTION -- */
+    #topNumberDisplay {
+        font-size: 1.2em;
+    }
+
+    #bottomNumberDisplay {
+        font-size: 2.2em;
+    }
+
+    /* ! -- BUTTON SECTION -- */
+    .btnsGridContainer {
+        height: 0px;
+        grid-template-columns: repeat(4, 4.2em);
+        grid-template-rows: repeat(5, 3.5em);
     }
 
     button {
