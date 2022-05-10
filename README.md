@@ -24,9 +24,7 @@ Doing this project made me a better developer for sure. I had to learn a lot of 
 
 # Design
 ## Original Design
-![original](https://raw.githubusercontent.com/Josue-Monfort/phone-calculator
-/main/.github/original.webp)
+![original](https://raw.githubusercontent.com/Josue-Monfort/phone-calculator/main/.github/original.webp)
 
 ## Final Design
-![final](https://raw.githubusercontent.com/Josue-Monfort/phone-calculator
-/main/.github/final.png)
+![final](https://raw.githubusercontent.com/Josue-Monfort/phone-calculator/main/.github/final.png)
